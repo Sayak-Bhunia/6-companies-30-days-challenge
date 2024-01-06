@@ -5,8 +5,8 @@ public:
             for(int j=y1;j<=y2;j++) {
                 int c1 = x - i;
                 int c2 = y - j;
-                if(c1*c1+c2*c2<=r*r) {
-                    return true; // gests triggered on atleast one overlap condition
+                if(c1*c1+c2*c2<=r*r) {  // checks if the distance of any point (x,y), in the rectangle area, from the center of the circle is < or = the square of the radius of the circle
+                    return true; // gests triggered on at least one overlap condition
                     break;
                 }
             }

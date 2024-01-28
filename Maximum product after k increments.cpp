@@ -1,21 +1,18 @@
-class Solution {
+class Solution {  //using just vector stl basically it converts the vector convetinally into a minHeap
 public:
     int maximumProduct(vector<int>& a, int k) {
         const int mod = 1e9+7;
         long long res = 1;
-        priority_queue<int, vector<int>, greater<int>> minHeap;
-        for(auto it:a) minHeap.push(it);
+        sort(a.begin(),a.end());
         while(k!=0) {
-            int pq = minHeap.top();
-            minHeap.pop();
-            minHeap.push(pq+1);
+            pop_heap(a.begin(), a.end(), greater<int>());
+            a.back()++;
+            push_heap(a.begin(), a.end(), greater<int>());
             k--;
         }
-        while(!minHeap.empty()) {
-            int pq = minHeap.top();
-            res *= pq;
+        for(auto it:a) {
+            res *= it;
             res %= mod;
-            minHeap.pop();
         }
         return res;
     }
